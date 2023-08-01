@@ -1,0 +1,121 @@
+﻿@model btl.Models.ApplicationUser
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <div class="container" ng-app="myApp" ng-controller="myCtrl">
+        <div class="modal-login">
+            <div class="modal__body">
+                <!-- authen form đnhap -->
+                <!-- authen form -->
+                <div class="auth-form">
+                    <div class="auth-form__container">
+                        <!-- title authen form -->
+                        <div class="auth-form__hd">
+                            <h3 class="auth-form__heading">Đăng nhập</h3>
+                            <a class="auth-form__switch-btn" href="/Home/Register" id="switch-dk">Đăng ký</a>
+                        </div>
+                        <!-- input authen form -->
+                        <div class="auth-form__form">
+                            <div class="auth-form__group">
+                                <input type="text" class="auth-form__input" ng-model="login.username" placeholder="Nhập Email của bạn">
+                            </div>
+                            <div class="auth-form__group">
+                                <input type="password" class="auth-form__input" ng-model="login.password" placeholder="Nhập mật khẩu của bạn">
+                            </div>
+                        </div>
+                        <!-- thêm 1 phần bất kì vào form -->
+                        <div class="auth-form__aside">
+                            <div class="auth-form__help">
+                                <a href="" class="auth-form__help-link auth-form__help-link-forgot">Quên mật khẩu</a>
+                                <span class="auth-form__help-separate"></span>
+                                <a href="" class="auth-form__help-link">Trợ giúp ?</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tạo btt cho authen form -->
+                    <div class="auth-form__control">
+                        <a href="/Home/Index" class="btn auth-form__control-back btn--normal back-btn">TRỞ LẠI</a>
+                        <button class="btn btn--primary btn-login" ng-click="Create()">ĐĂNG NHẬP</button>
+                    </div>
+                    <div class="auth-form__socials">
+                        <a href="" class="btn btn--with-icon btn-size-s auth-form__socials-fb">
+                            <i class="auth-form__socials-icon fa-brands fa-facebook"></i>
+                            <span class="auth-form__socials-title help">Đăng nhập với Facebook</span>
+                        </a>
+                        <a href="" class="btn btn--with-icon btn-size-s auth-form__socials-gg">
+                            <i class="auth-form__socials-icon fa-brands fa-google"></i>
+                            <span class="auth-form__socials-title help">Đăng nhập với Google</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope, $http) {
+            $scope.login = {};
+            $scope.Create = Create;
+            function Create() {
+                console.log($scope.login);
+                $http.post("/Home/Loginss", $scope.login).then(function (result) {
+                    console.log(result.data);
+                    if (result.data == true) {
+                        alert('Đăng nhập thành công!!!');
+                        window.location.href = "/Home/Index"
+                        var delayInMilliseconds = 2000;
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Đăng nhập thành công',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                        setTimeout(function () {
+                            document.getElementById("ismForm").submit();
+                        }, delayInMilliseconds);
+                    }
+                    else {
+                        alert('Tài khoản hoặc mật khâu sai! Vui lòng đăng nhập lại');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Tên tài khoản hoặc mật khẩu không chính xác ...',
+                            footer: ''
+                        })
+                    }
+                }, function (error) {
+                    console.log(error.status)
+
+                });
+            }
+            $scope.username = {};
+            $scope.AddUsername = AddUsername;
+            function AddUsername() {
+
+                $http.post("/Home/Logins", $scope.username).then(function (result) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Thêm thành công !',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+
+
+                }, function (error) {
+                    Swal.fire(
+                        '',
+                        'Nhập không đúng dữ liệu ! Thử lại',
+                        'warning'
+                    )
+                    console.log(error);
+
+                });
+            }
+        });
+    </script>
+
+}

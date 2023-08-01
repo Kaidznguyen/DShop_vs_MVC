@@ -1,0 +1,137 @@
+﻿@model PagedList.IPagedList<btl.Models.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "listProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="grid wide">
+        <div class="row app__content sm-gutter">
+            <div class="col l-2 m-0 c-0">
+                <nav class="category">
+                    <h3 class="category__heading">
+                        <i class="category__heading-icon fa-solid fa-list-ul"></i>
+                        Danh mục
+                    </h3>
+                    @Html.Action("Menu_cateproduct")
+                </nav>
+            </div>
+            <div class="col l-10 m-12 c-12">
+                <div class="home-filter hide-on-mobile-table">
+                    <span class="home-filter_label">Sắp xếp theo</span>
+                    <button class="home-filter_btn btn">Phổ biến</button>
+                    <button class="home-filter_btn btn btn--primary">Mới nhất</button>
+                    <button class="home-filter_btn btn">Bán chạy</button>
+
+                    <div class="select-input">
+                        <span class="select-input__label">Giá </span>
+                        <i class="fa-solid fa-angle-down"></i>
+                        <!-- list option -->
+                        <ul class="select-input__list">
+                            <li class="select-input__items"><a href="#" class="select-input__link">Giá thấp đến cao</a></li>
+                            <li class="select-input__items"><a href="#" class="select-input__link">Giá cao đến thấp</a></li>
+                        </ul>
+                    </div>
+                    <div class="home-filter__page">
+                        <span class="home-filter__page-num">
+                            <span class="home-filter__page-current">1</span>/10
+                        </span>
+                        <div class="home-filter__page-control">
+                            <a href="" class="home-filter__page-btn home-filter__page-btn-dis">
+                                <i class="home-filter__page-icon fa-solid fa-angle-left"></i>
+                            </a>
+                            <a href="" class="home-filter__page-btn">
+                                <i class="home-filter__page-icon fa-solid fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <nav class="mobile-category show-on-mobile-tablet">
+                    <ul class="mobile-category__list">
+                        <li class="mobile-category__item help">
+                            <a href="" class="mobile-category__link">Mô hình DC</a>
+                        </li>
+                        <li class="mobile-category__item help">
+                            <a href="" class="mobile-category__link">Mô hình Marvel</a>
+                        </li>
+                        <li class="mobile-category__item help">
+                            <a href="" class="mobile-category__link">Mô hình One Piece</a>
+                        </li>
+                        <li class="mobile-category__item help">
+                            <a href="" class="mobile-category__link">Mô hình Dragon Ball</a>
+                        </li>
+                        <li class="mobile-category__item help">
+                            <a href="" class="mobile-category__link">Phụ kiện</a>
+                        </li>
+                        <li class="mobile-category__item help">
+                            <a href="" class="mobile-category__link">Trang phục Cosplay</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- sản phẩm -->
+                <div class="home-product">
+                    <div class="row sm-gutter">
+                        @foreach (var sp in Model)
+                        {
+                        <div class="col l-2-4 m-4 c-6 home-product-item">
+                            <a style="text-decoration:none;" href="DetailProduct/@sp.ID">
+                                <div>
+                                    <img src="/Uploadimg/@sp.Image" alt="" class="home-product-item__img">
+                                </div>
+                                <h4 class="home-product-item__name">@sp.Name</h4>
+                                <div class="home-product-item__price">
+                                    <span class="home-product-item__price-old">@Html.FormatValue(@sp.Price, "{0:#,##0}")</span>
+                                    <span class="home-product-item__price-curent">@Html.FormatValue(@sp.OriginalPrice, "{0:#,##0}")</span>
+                                </div>
+                            </a>
+                            <div class="home-product-item__action">
+                                @*<span class="home-product-item__like" >*@
+                                <a class="home-product-item__like" href="/Home/AddCart/@sp.ID">
+                                    <i class="icon-cart fa-solid fa-cart-plus"></i>
+                                </a>
+                                @*</span>*@
+                                <div class="home-product-item__ratting">
+                                    <i class="home-product-item__star-gold fa-solid fa-star"></i>
+                                    <i class="home-product-item__star-gold fa-solid fa-star"></i>
+                                    <i class="home-product-item__star-gold fa-solid fa-star"></i>
+                                    <i class="home-product-item__star-gold fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <span class="home-product-item__sold">77 đã bán</span>
+                            </div>
+                            <div class="home-product-item__origin">
+                                <span class="home-product-item__brand">@sp.ProductCategory.Name</span>
+                                <span class="home-product-item__origin-name">Japan</span>
+                            </div>
+                            @if (@sp.HotFlag == true && @sp.Status == true)
+                            {
+                                <div class="home-product-item__favourite">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span>Sản phẩm hot</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="home-product-item__favourite sold-out">
+                                    <span>Hết hàng</span>
+                                </div>
+                            }
+                            <div class="home-product-item__sale-off">
+                                <span class="home-product-item__sale-off-percent">@Html.FormatValue((((sp.Price - sp.OriginalPrice) / sp.Price) * 100), "{0:#,##0}") %</span>
+                                <span class="home-product-item__sale-off-label">GIẢM</span>
+                            </div>
+
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div>
+                    @Html.PagedListPager(Model, pageNumber => Url.Action("listProduct", new { page = pageNumber }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

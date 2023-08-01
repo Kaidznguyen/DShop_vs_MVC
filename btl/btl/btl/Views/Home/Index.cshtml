@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container container-index">
+    <div class="slider-show">
+        @Html.Action("slide")
+    </div>
+        <div class="grid wide">
+
+            <div class="index-product-title">
+                <a href="/Home/Categoryhot">Sản phẩm bán chạy</a>
+            </div>
+            <div class="index-product-link">
+                <a href="/Home/Categoryhot">Xem thêm...</a>
+            </div>
+            <div class="slider-product">
+                @Html.Action("Menu_item")
+            </div>
+
+            <div class="img-content">
+                <div class="row sm-gutter">
+                    <div class="col l-4 c-12 m-4 content-img">
+                        <a href="" class="content-img-item"><img src="~/Asset/Home/Index/img/slide & QC/sale.png" alt=""></a>
+                        <div class="img-content-title">
+                            <span>Giảm Giả</span>
+                        </div>
+                    </div>
+                    <div class="col l-4 c-12 m-4 content-img">
+                        <a href="/Home/listProduct/21" class="content-img-item"><img src="~/Asset/Home/Index/img/slide & QC/moc-kiem.png" alt=""></a>
+                        <div class="img-content-title">
+                            <span>Móc khóa</span>
+                        </div>
+                    </div>
+                    <div class="col l-4 c-12 m-4 content-img">
+                        <a href="/Home/CategoryPost" class="content-img-item"><img src="~/Asset/Home/Index/img/slide & QC/blog.png" alt=""></a>
+                        <div class="img-content-title">
+                            <span>blog</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="index-product-title">
+                <a href="/Home/listProduct/21" id="cosplay">Phụ kiện Anime & Game</a>
+            </div>
+            <div class="index-product-link">
+                <a href="/Home/listProduct/21">Xem thêm...</a>
+            </div>
+            <div class="slider-product">
+                @Html.Action("Menu_item2")
+            </div>
+            <div class="index-product-title">
+                <a href="CategoryPost">Bài viết nổi bật</a>
+            </div>
+            <div class="index-product-link">
+                <a href="/Home/CategoryPost">Xem thêm...</a>
+            </div>
+            <div class="newspaper-content">
+                <div class="row sm-gutter">
+                    @Html.Action("Menu_post")
+                </div>
+            </div>
+        </div>
+        <div class="register-email">
+            <div class="register-email-container" style="background-image: url(http://theme.hstatic.net/200000112489/1000589682/14/bg-newsletter.jpg?v=204);">
+                <div class="register-email-header">
+                    <div class="register-email-title">
+                        <h1>đăng ký</h1>
+                    </div>
+                    <div class="register-email-subtit">
+                        <span>Đăng ký nhận bản tin của Figure Store để cập nhật những sản phẩm mới, nhận thông tin ưu đãi đặc biệt và thông tin giảm giá khác.</span>
+                    </div>
+                    <div class="register-email-text">
+                        <input type="email" class="register-email-form" placeholder="Nhập vào email của bạn....">
+                        <button class="register-email-btn"><span>gửi</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="index-product-title" style="margin-bottom: 80px;">
+            <a href="">Ảnh feedback từ khách</a>
+        </div>
+        <div class="feedback-img">
+            <div class="row sm-gutter">
+                <div class="col l-2 c-4 m-2 feedback-img">
+                    <div class="feedback-img-item">
+                        <img src="/Asset/Home/Index/img/slide & QC/feedback1.png" alt="">
+                        <div class="feedback-img-icon">
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l-2 c-4 m-2 feedback-img">
+                    <div class="feedback-img-item">
+                        <img src="/Asset/Home/Index/img/slide & QC/feedback2.png" alt="">
+                        <div class="feedback-img-icon">
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l-2 c-4 m-2 feedback-img">
+                    <div class="feedback-img-item on-mobile">
+                        <img src="/Asset/Home/Index/img/slide & QC/feedback3.png" alt="">
+                        <div class="feedback-img-icon">
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l-2 c-4 m-2 feedback-img">
+                    <div class="feedback-img-item">
+                        <img src="/Asset/Home/Index/img/slide & QC/feedback4.png" alt="">
+                        <div class="feedback-img-icon">
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l-2 c-4 m-2 feedback-img">
+                    <div class="feedback-img-item">
+                        <img src="/Asset/Home/Index/img/slide & QC/feedback5.png" alt="">
+                        <div class="feedback-img-icon">
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l-2 c-4 m-2 feedback-img">
+                    <div class="feedback-img-item" style="margin-right: 5px;">
+                        <img src="/Asset/Home/Index/img/slide & QC/feedback6.png" alt="">
+                        <div class="feedback-img-icon">
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                            <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

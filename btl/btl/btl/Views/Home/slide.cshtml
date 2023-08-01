@@ -1,0 +1,8 @@
+﻿@model List<btl.Models.Slide>
+@foreach (var sl in Model)
+    {
+        if (sl.DisplayOrder <= 4)
+        {
+            <div class="slider-show_img"><img src="/Uploadimg/@sl.Image" alt="@sl.Name"></div>
+        }
+    }

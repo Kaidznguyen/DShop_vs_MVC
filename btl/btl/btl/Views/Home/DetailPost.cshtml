@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "DetailPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container container-ctsp">
+    <div class="blog__img">
+        <img src="~/Asset/Home/Index/img/blog/slide.png" alt="">
+    </div>
+    <div class="grid wide">
+        <div class="row sm-gutter">
+            <div class="col l-4 c-0 m-0">
+                <div class="new-content-blog blog2">
+                    <h2 class="title-new-blog title-blog2">Danh mục blog</h2>
+                    <div class="blog-directory-item">
+                        <h1><a href="/Home/DetailPost/5" class="blog-directory-link">Giới thiệu</a></h1>
+                    </div>
+                    <div class="blog-directory-item">
+                        <h1><a href="" class="blog-directory-link">Chính sách đổi trả</a></h1>
+                    </div>
+                    <div class="blog-directory-item">
+                        <h1><a href="" class="blog-directory-link">Chính sách bảo mật</a></h1>
+                    </div>
+                    <div class="blog-directory-item">
+                        <h1><a href="" class="blog-directory-link">Điều khoản dịch vụ</a></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-8 c-12 m-12">
+                <div class="blog-detail-content">
+                    <h2 class="blog-detail-title" style="line-height:4rem">
+                        @Model.Name
+                    </h2>
+                    <span class="blog-detail-author">Người viết: @Model.CreatedBy lúc  @Html.FormatValue(Model.CreatedDate, "{0:dd/MM/yyyy}")</span>
+                    <span class="blog-detail-author"><i class="blog-detail-icon fa-solid fa-file-lines"></i> <a href="blog.html">Tin tức - DShop</a></span>
+                    <span class="blog-detail-author"><i class="blog-detail-icon fa-solid fa-comment"></i><a href="#comment">0 Bình luận</a></span>
+                    @Html.Raw(Model.Content)
+                    <div class="blog-comment">
+                        <div class="blog-comment__title">
+                            <h2 class="title-new-blog title-blog3">viết bình luận</h2>
+                            <input type="text" placeholder="Viết bình luận của bạn..." class="tabs-content-form-index margin-top">
+                            <button class="btn btn--primary help">Đăng bình luận</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="index-product-title" style="margin-bottom: 50px;margin-top: 30px;">
+        <a href="">Ảnh feedback từ khách</a>
+    </div>
+    <div class="feedback-img">
+        <div class="row sm-gutter">
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback1.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback2.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item on-mobile">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback3.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback4.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback5.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item" style="margin-right: 5px;">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback6.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

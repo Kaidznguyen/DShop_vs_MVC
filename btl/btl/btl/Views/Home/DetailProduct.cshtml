@@ -1,0 +1,122 @@
+﻿@model btl.Models.Product
+@{
+    ViewBag.Title = "DetailProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container container-ctsp">
+    <div class="grid wide">
+        <div class="row sm-gutter">
+            @*<div class="col l-1 c-12 m-2">
+                    <div class="list-img">
+                        <div class="list-img-item">
+                            <img src="/Uploadimg/@Model.Image" alt="" class="img1">
+                        </div>
+                        <div class="list-img-item">
+                            <img src="/Uploadimg/@Model.MoreImages" alt="" class="img2">
+                        </div>
+                        <div class="list-img-item">
+                            <img src="/Uploadimg/@Model.MoreImages" alt="" class="img3">
+                        </div>
+                        <div class="list-img-item">
+                            <img src="/Uploadimg/@Model.MoreImages" alt="" class="img4">
+                        </div>
+                        <div class="list-img-item">
+                            <img src="/Uploadimg/@Model.MoreImages" alt="" class="img5">
+                        </div>
+                    </div>
+                </div>*@
+            <div class="col l-6 c-12 m-10">
+                <div class="main-img">
+                    <img src="/Uploadimg/@Model.Image" alt="">
+                </div>
+            </div>
+            <div class="col l-5 c-12 m-12">
+                <div class="main-content-img">
+                    <div class="main-content-title">
+                        <span><a href="/Home/Index"> trang chủ </a> / <a href="/Home/Category">Danh sách mô hình</a></span>
+                        <h1>@Model.Name</h1>
+                    </div>
+                    <div class="main-content-price">
+                        <span>@Html.FormatValue(@Model.OriginalPrice, "{0:#,##0}") đ</span>
+                    </div>
+                    <div class="main-content-subtit">
+                        <ul class="main-content-list">
+                            <li class="main-content-item"><i class="main-content-icon fa-solid fa-check"></i> Hàng mới 100% fullbox</li>
+                            <li class="main-content-item"><i class="main-content-icon fa-solid fa-check"></i> Đổi trả trong 3 ngày</li>
+                            <li class="main-content-item"><i class="main-content-icon fa-solid fa-check"></i> Check lỗi kĩ càng trước khi gửi</li>
+                            <li class="main-content-item"><i class="main-content-icon fa-solid fa-check"></i> Hình ảnh thật được chụp trực tiếp 100% tại shop</li>
+                            <li class="main-content-item"><i class="main-content-icon fa-solid fa-check"></i> Nhiều ưu đãi với các gói hỗ trợ freeship</li>
+                        </ul>
+                    </div>
+                    <div class="main-content-btn">
+
+                        <a href="#" id="addtocart" style="text-decoration: none"> <span class="btn-main2" style="padding: 6px 3px; border-radius: 5px; color: var(--text2-color); font-weight: bolder; font-size: 15px">Thêm vào giỏ hàng</span></a>
+                    </div>
+                    <div class="main-content-text">
+                        <span class="main-content-text-list">Danh mục:<a href="product.html">Mô hình</a>;<a href="">Mô hình One Piece</a></span>
+                    </div>
+                    <div class="main-content-text">
+                        <span class="main-content-text-key">Từ khóa:<a href="">Zoro</a>;<a href="">One Piece</a>;<a href="">Zoro tam long</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs">
+            <ul class="nav-tabs">
+                <li class="tabs-item active"><a href="#tab1">Mô tả sản phẩm</a></li>
+                <li class="tabs-item"><a href="#tab2">Hướng dẫn mua hàng</a></li>
+                <li class="tabs-item"><a href="#tab3">Đánh giá</a></li>
+            </ul>
+            <div class="tabs-content">
+                <div class="tabs-content-item" id="tab1">
+                    <span class="title-tab"></span>
+                    @Html.Raw(Model.Content)
+                </div>
+                <div class="tabs-content-item" id="tab2">
+
+                    <div class="tabs-content_subtit">
+                        @Html.Raw(Model.Description)
+                    </div>
+
+                </div>
+                <div class="tabs-content-item" id="tab3">
+                    <h2 class="tabs-content-title">đánh giá</h2>
+                    <span class="title-tab">Chưa có đánh giá</span>
+                    <div class="tabs-content-form">
+                        <input type="text" placeholder="Hãy nhập vào đây...." class="tabs-content-form-index">
+                        <button class="btn btn--primary help">Đăng bình luận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+</div>
+@section scripts{
+    <script type="text/javascript">
+    $(function () {
+        $("#addtocart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = @Model.ID;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddToCart", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert("Thêm giỏ hàng thành công!")
+                    $('#CartCount').text(@Session["count"] + 1);
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+}
+

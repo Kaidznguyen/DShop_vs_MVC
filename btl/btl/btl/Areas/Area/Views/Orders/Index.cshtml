@@ -1,0 +1,71 @@
+﻿@model IEnumerable<btl.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Area/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quản lý hóa đơn</h2>
+
+@*<p>
+    @Html.ActionLink(" Thêm mới", "Create", null, new { @class = "btn btn-warning fa fa-plus" })
+</p>*@
+<table class="table table-bordered table-striped" id="dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerMobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerMobile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentMethod)
+                </td>
+                <td>
+                    @Html.FormatValue(item.CreatedDate, "{0:dd/MM/yyyy}")
+                </td>
+
+                <td>
+                    @*@Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @Class = "btn btn-warning fa fa-pencil" })*@
+                    @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @Class = "btn btn-primary fa fa-eye" })
+                    @*@Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @Onclick = "return confirm('Bạn có chắc muốn xóa không?')", @Class = "btn btn-danger fa fa-trash" })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

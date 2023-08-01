@@ -1,0 +1,20 @@
+﻿@model List<btl.Models.Post>
+@foreach (var ps in Model)
+{
+    if (ps.HotFlag == true && ps.Status == true)
+    {
+            <div class="col l-4 c-12 m-4">
+                <a href="/Home/DetailPost/@ps.ID" class="content-newspaper-item"><img src="~/Uploadimg/@ps.Image" alt="" title="@ps.Alias"></a>
+                <div class="content-newspaper-time">
+                    <span>@Html.FormatValue(ps.CreatedDate, "{0:dd/MM/yyyy}")</span>
+                </div>
+                <div class="content-newspaper-title">
+                    <a href="/Home/DetailPost/@ps.ID">@ps.Name</a>
+                </div>
+                <div class="content-newspaper" style="height:7rem !important">
+                    @Html.Raw(ps.Description)
+                </div>
+            </div>
+    }
+}
+

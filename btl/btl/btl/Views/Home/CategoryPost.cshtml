@@ -1,0 +1,143 @@
+﻿@model List<btl.Models.Post>
+@{
+    ViewBag.Title = "CategoryPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container container-ctsp">
+    <div class="blog__img">
+        <img src="~/Asset/Home/Index/img/blog/slide.png" alt="">
+    </div>
+    <div class="grid wide">
+        <div class="row sm-gutter">
+            <div class="col l-4 c-0 m-0">
+                <div class="new-content-blog">
+                    <h2 class="title-new-blog">bài viết mới nhất</h2>
+                    @foreach(var sp in Model)
+                    {
+                        if(@sp.HotFlag == true)
+                        {
+                            <div class="content-blog-left">
+                                <div class="content-blog-left_img">
+                                    <a href="/Home/DetailPost/@sp.ID"><img src="~/Uploadimg/@sp.Image" alt=""></a>
+                                    <a href="/Home/DetailPost/@sp.ID" class="content-blog-left-title">@sp.Name</a>
+                                    <span class="content-blog-left-author">@sp.CreatedBy <b>@Html.FormatValue(sp.CreatedDate, "{0:dd/MM/yyyy}")</b></span>
+                                </div>
+                            </div>
+                        }
+                        
+                    }
+                </div>
+                <div class="new-content-blog blog2">
+                    <h2 class="title-new-blog title-blog2">Danh mục blog</h2>
+                    <div class="blog-directory-item">
+                        <h1><a href="/Home/DetailPost/5" class="blog-directory-link">Giới thiệu</a></h1>
+                    </div>
+                    <div class="blog-directory-item">
+                        <h1><a href="" class="blog-directory-link">Chính sách đổi trả</a></h1>
+                    </div>
+                    <div class="blog-directory-item">
+                        <h1><a href="" class="blog-directory-link">Chính sách bảo mật</a></h1>
+                    </div>
+                    <div class="blog-directory-item">
+                        <h1><a href="" class="blog-directory-link">Điều khoản dịch vụ</a></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-8 c-12 m-12">
+                <div class="content-blog">
+                    <h2 class="content-blog-title">tin tức - DShop</h2>
+                    <div class="row">
+                        @foreach (var ds in Model)
+                        {
+                            <div class="content-blog-item">
+                                <div class="col l-5 c-5 m-5">
+                                    <div class="content-blog-main_img">
+                                        <a href="/Home/DetailPost/@ds.ID"><img src="~/Uploadimg/@ds.Image" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="col l-7 c-7 m-7">
+                                    <div class="content-blog-main_sub">
+                                        <a href="/Home/DetailPost/@ds.ID" class="content-blog-main_title">@ds.Name</a>
+                                        <p class="content-blog-main_author">Người viết: @ds.CreatedBy / <b>@Html.FormatValue(ds.CreatedDate, "{0:dd/MM/yyyy}")</b></p>
+                                        @Html.Raw(ds.Description)
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="index-product-title" style="margin-bottom: 50px;margin-top: 30px;">
+        <a href="">Ảnh feedback từ khách</a>
+    </div>
+    <div class="feedback-img">
+        <div class="row sm-gutter">
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback1.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback2.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item on-mobile">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback3.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback4.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback5.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col l-2 c-4 m-2 feedback-img">
+                <div class="feedback-img-item" style="margin-right: 5px;">
+                    <img src="/Asset/Home/Index/img/slide & QC/feedback6.png" alt="">
+                    <div class="feedback-img-icon">
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-heart"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-comment"></i></a>
+                        <a href=""><i class="feedback-img-icon_item fa-solid fa-share"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

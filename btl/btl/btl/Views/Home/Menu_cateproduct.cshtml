@@ -1,0 +1,14 @@
+﻿@model List<btl.Models.ProductCategory>
+<ul class="category-list">
+    <li class="category-items">
+        <a href="/Home/Categoryhot" class="category-items__active">
+            <i class="category__items-icon fa-solid fa-caret-right"></i>
+            Sản phẩm hot
+        </a>
+    </li>
+    @foreach (var ds in Model)
+    { 
+        <li class="category-items"><a href="/Home/listProduct/@ds.ID" class="category-items__link">@ds.Name</a></li>
+    }
+</ul>
+

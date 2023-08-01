@@ -1,0 +1,181 @@
+﻿@*@model btl.Models.Order
+
+    @{
+        ViewBag.Title = "Details";
+        Layout = "~/Areas/Area/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Details</h2>
+
+    <div>
+        <h4>Order</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CustomerName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CustomerAddress)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CustomerEmail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerMobile)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CustomerMobile)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerMessage)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CustomerMessage)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentMethod)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaymentMethod)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentStatus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaymentStatus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationUser.FullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUser.FullName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+
+@model btl.Models.Order
+@using btl.Models;
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Area/Views/Shared/_Layout.cshtml";
+    DshopEntities db = new DshopEntities();
+    var ORDE = db.OrderDetails.ToList();
+    var prod = db.Products.ToList();
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <p style="display:flex;justify-content:space-between">
+            <a href="@Url.Action("Index" , "Orders")" class="btn btn-sm btn-success"><i class="fas fa-arrow-left"></i> Quay lại</a>
+        </p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tên khách hàng</th>
+                        <th>Đia chỉ</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Phương thức thanh toán</th>
+                        <th>Ngày đặt hàng</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> @Html.DisplayFor(model => model.CustomerName)</td>
+                        <td>@Html.DisplayFor(model => model.CustomerAddress)</td>
+                        <td>@Html.DisplayFor(model => model.CustomerEmail)</td>
+                        <td>@Html.DisplayFor(model => model.CustomerMobile)</td>
+                        <td>@Html.DisplayFor(model => model.PaymentMethod)</td>
+                        <td> @Html.DisplayFor(model => model.CreatedDate)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá tiền </th>
+                        <th>Số lượng </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ORDE)
+                    {
+                        foreach (var imx in prod)
+                        {
+                            if (item.OrderID == Model.ID && item.Product.ID == imx.ID)
+                            {
+                                <tr>
+                                    <td>@imx.Name</td>
+
+                                    <td> @String.Format("{0:#,0}", (item.Quantitty * @imx.OriginalPrice)) đ</td>
+
+                                    <td> @item.Quantitty</td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

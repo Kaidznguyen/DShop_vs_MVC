@@ -1,0 +1,52 @@
+﻿@model List<btl.Models.Product>
+@foreach (var ds in Model)
+{
+    if(ds.HomeFlag == true && ds.CategoryID != 21)
+                {
+                    <div class="slider-product-item">
+                        <a class="home-product-item" href="/Home/DetailProduct/@ds.ID">
+                            <div class="">
+                                @* muốn chuyển đổi ảnh thì thêm class change_img *@
+                                <img src="/Uploadimg/@ds.Image" alt="" class="home-product-item__img">
+                                @*<img src="/Uploadimg/@ds.MoreImages" alt="" class="home-product-item__img">*@
+                            </div>
+                            <h4 class="home-product-item__name">@ds.Name</h4>
+                            <div class="home-product-item__price">
+                                <span class="home-product-item__price-old">@Html.FormatValue(@ds.Price, "{0:#,##0}")</span>
+                                <span class="home-product-item__price-curent">@Html.FormatValue(@ds.OriginalPrice, "{0:#,##0}")</span>
+                            </div>
+                            <div class="home-product-item__origin">
+                                <span class="home-product-item__brand">Phân loại</span>
+                                <span class="home-product-item__origin-name">Xuất sứ</span>
+                            </div>
+                            <div class="home-product-item__origin">
+                                <span class="home-product-item__brand">@ds.ProductCategory.Name</span>
+                                <span class="home-product-item__origin-name">China</span>
+                            </div>
+
+                                    @if (@ds.HotFlag == true && @ds.Status == true)
+                                    {
+                                            <div class="home-product-item__favourite">
+                                                <i class="fa-solid fa-check"></i>
+                                                <span>Sản phẩm hot</span>
+                                            </div>
+                                    }                                  
+                                    else{
+                                            <div class="home-product-item__favourite sold-out">
+                                                <span>Hết hàng</span>
+                                            </div>
+                                    }
+                                
+                                <div class="home-product-item__sale-off">
+                                    <span class="home-product-item__sale-off-label">GIẢM</span>
+                                    <span class="home-product-item__sale-off-percent">@Html.FormatValue((((ds.Price - ds.OriginalPrice) / ds.Price) * 100), "{0:#,##0}") %</span>
+                                </div>
+                            </a>
+                    </div>
+                }
+                else
+                {
+
+                }
+    
+}

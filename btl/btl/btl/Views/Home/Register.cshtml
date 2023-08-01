@@ -1,0 +1,58 @@
+﻿
+<div class="modal-register">
+    <!-- tạo lớp phủ màu đen bằng modal__overplay -->
+    <div class="modal__overplay"></div>
+    <div class="modal__body">
+        <!-- authen form đky -->
+        <div class="auth-form ">
+            <div class="auth-form__container">
+                <!-- title authen form -->
+                <div class="auth-form__hd">
+                    <h3 class="auth-form__heading">Đăng ký</h3>
+                    <a class="auth-form__switch-btn" id="switch-dn" href="/Home/Login">Đăng nhập</a>
+                </div>
+                <!-- input authen form -->
+                <div class="auth-form__form">
+                    <div class="auth-form__group">
+                        <input type="text" class="auth-form__input" placeholder="Nhập họ tên của bạn">
+                    </div>
+                    <div class="auth-form__group">
+                        <input type="tel" class="auth-form__input" maxlength="10" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="Nhập số điện thoại của bạn">
+                    </div>
+                    <div class="auth-form__group">
+                        <input type="text" class="auth-form__input" placeholder="Nhập Email của bạn">
+                    </div>
+                    <div class="auth-form__group">
+                        <input type="password" class="auth-form__input" placeholder="Nhập mật khẩu của bạn">
+                    </div>
+                    <div class="auth-form__group">
+                        <input type="password" class="auth-form__input" placeholder="Xác nhận mật khẩu">
+                    </div>
+                </div>
+                <!-- thêm 1 phần bất kì vào form -->
+                <div class="auth-form__aside">
+                    <p class="auth-form__policy-text">
+                        Bằng việc đăng ký, bạn đã đồng ý với tất cả các điều khoản của Dshop
+                        <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
+                        <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                    </p>
+                </div>
+            </div>
+            <!-- tạo btt cho authen form -->
+            <div class="auth-form__control">
+                <a href="/Home/Index" class="btn auth-form__control-back btn--normal back-btn">TRỞ LẠI</a>
+                <button class="btn btn--primary">ĐĂNG KÝ</button>
+            </div>
+            <div class="auth-form__socials">
+                <a href="" class="btn btn--with-icon btn-size-s auth-form__socials-fb">
+                    <i class="auth-form__socials-icon fa-brands fa-facebook"></i>
+                    <span class="auth-form__socials-title help">Kết nối với Facebook</span>
+                </a>
+                <a href="" class="btn btn--with-icon btn-size-s auth-form__socials-gg">
+                    <i class="auth-form__socials-icon fa-brands fa-google"></i>
+                    <span class="auth-form__socials-title help">Kết nối với Google</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

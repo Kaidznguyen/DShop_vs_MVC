@@ -1,0 +1,163 @@
+﻿@model IEnumerable<btl.Models.OrderDetail>
+@{
+    ViewBag.Title = "ViewCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+<div class="container" ng-app="myApp" ng-controller="myContr">
+    <div class="grid wide">
+        <div class="col l-12 m-12 c-12 table-content">
+            <h2 class="cart-title">DSHOP | Giỏ hàng</h2>
+            <div id="cart-product">
+
+
+                @{double tongtien = 0;}
+                @if (Model != null)
+                {
+                    <table cellspacing="0" cellpadding="0">
+                        <tr>
+                            <th class="cart-product_title">Ảnh</th>
+                            <th class="cart-product_title">Tên sản phẩm</th>
+                            <th class="cart-product_title">Đơn giá</th>
+                            <th class="cart-product_title">Số lượng</th>
+                            <th class="cart-product_title">Thành tiên</th>
+                            <th class="cart-product_title">Xóa</th>
+                        </tr>
+                        @foreach (var sp in Model)
+                        {
+                            <tr id="product-@sp.Product.ID">
+                                <td>
+                                    <div class="img">
+                                        <a href="#"><img src="~/Uploadimg/@sp.Product.Image" alt="Product Image"></a>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <p>@sp.Product.Name</p>
+                                </td>
+                                <td>@String.Format(format, "{0:c0}", @sp.Product.OriginalPrice)</td>
+
+                                <td>
+                                    <input type="button" class="cart-product_min" value="-" ng-click="giam()">
+                                    <input type="text" class="cart-product_number" value="@sp.Quantitty">
+                                    <input type="button" class="cart-product_max" value="+" ng-click="tang()">
+                                </td>
+                                <td style=" font-size: 1.4rem; font-weight: 550; color: var(--text-color); text-decoration: none;">@String.Format(format, "{0:c0}", (@sp.Quantitty * @sp.Product.OriginalPrice))</td>
+                                <td>
+                                    <input type="hidden" value="@sp.Product.ID" class="productid" />
+                                    <button id="removecart">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                            tongtien += Convert.ToDouble(sp.Quantitty * sp.Product.OriginalPrice);
+
+                        }
+                    </table>
+                }
+                else
+                {
+                    <h1 style="color: var(--primary-color)">Bạn chưa đặt mua sản phẩm nào cả, hãy đặt hàng ngay bây giờ thôi ^^!!!</h1>
+                }
+
+
+            </div>
+        </div>
+        <div class="col l-12 m-8 c-12 payment-content">
+
+            
+                <div class="row app__content sm-gutter">
+                    <div class="col l-8 m-12 c-12">
+                        @using (Html.BeginForm("Payment", "cart", FormMethod.Post))
+                        {
+                        <div class="addres-content">
+                            <h2 class="cart-title">thông tin liên hệ của khách hàng</h2>
+                            <div>
+                                <span class="payment-title">Liên hệ</span>
+                                <input type="text" class="payment__input" required name="csName" maxlength="50" placeholder="Nhập họ tên của bạn">
+                            </div>
+                            <div>
+                                <input type="tel" class="payment__input" required name="csMobile" maxlength="10" placeholder="Nhập số điện thoại của bạn">
+                            </div>
+                            <div>
+                                <input type="email" class="payment__input" required name="csEmail" placeholder="Nhập Email của bạn">
+                            </div>
+                            <div>
+                                <input type="text" class="payment__input" required name="csAddress" placeholder="Nhập địa chỉ giao hàng">
+                            </div>
+                            <div>
+                                <span class="payment-title">Phương thức thanh toán</span>
+                                <br />
+                                <input type="radio" id="Tructiep" name="payment" value="Trực tiếp"/>
+                                <label for="html">Trực tiếp</label><br />
+                                <input type="radio" id="Chuyenkhoan" name="payment" value="Chuyển khoản" />
+                                <label for="html">Chuyển khoản</label><br />
+                            </div>
+                            <div class="btn-buy">
+                                <a href="@Url.Action("Index", "Payment")" style="text-decoration:none;"><input type="submit" value="Thanh toán" class="btn btn--primary"></a>
+                            </div>
+                        </div>
+                        }
+                        </div>
+                    <div class="col l-4 m-12 c-12">
+                        <div class="payment-content">
+                            <h2 class="cart-title">thông tin đơn hàng</h2>
+                            <div class="temporary-payment">
+                                <span>Tạm tính (0 sản phẩm)</span>
+                                <span class="payment-price">@String.Format(format, "{0:c0}", @tongtien)</span>
+                            </div>
+                            <div class="temporary-payment">
+                                <span>Phí giao hàng</span>
+                                <span class="payment-price">0đ</span>
+                            </div>
+                            <div class="temporary-payment">
+                                <span>Tổng cộng</span>
+                                <span class="payment-price" style="color: var(--primary-color);">@String.Format(format, "{0:c0}", @tongtien)</span>
+                            </div>
+                            <div class="VAT">
+                                <span></span>Đã bao gồm VAT (nếu có)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>        
+            
+    </div>
+ </div>   
+
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+        myApp.filter("sanitize", ['$sce', function ($sce) {
+            return function (htmlCode) {
+                return $sce.trustAsHtml(htmlCode);
+            }
+        }]);
+        $(function () {
+        $("#removecart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = $(".productid").val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Remove", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    $('#CartCount').text(@Session["count"] - 1);
+                    $("#product-" + model.Id).remove();
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+}
+
+

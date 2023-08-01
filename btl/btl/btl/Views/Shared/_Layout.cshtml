@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DShop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="/Asset/Home/Index/base.css">
+    <link rel="stylesheet" href="/Asset/Home/Index/main.css">
+    <link rel="stylesheet" href="/Asset/Home/Index/grid-system.css">
+    <link rel="stylesheet" href="/Asset/Home/Index/reponsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Asset/Home/Index/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Asset/Home/Index/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Asset/Home/Index/favicon_io/favicon-32x32.png">
+    <link rel="manifest" href="/Asset/Home/Index/favicon_io/site.webmanifest">
+</head>
+<body>
+    <div class="main">
+        <header class="header">
+            <div class="grid wide">
+                <!-- navbar -->
+                <nav class="hd__navbar hide-on-mobile-table">
+                    <ul class="hd__navbar-list">
+                        <li class="hd__navbar-item  separate hidden-qr" style="cursor: pointer;">
+                            Mô hình Anime - Manga - Movie
+                        </li>
+                        <li class="hd__navbar-item">
+                            Kết nối
+                            <a href="https://facebook.com" class="hd__navbar-icon"><i class=" fa-brands fa-facebook"></i></a>
+                            <a href="https://instagram.com" class="hd__navbar-icon"><i class=" fa-brands fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="hd__navbar-list">
+                        <li class="hd__navbar-item notify">
+                            <a href="" class="hd__navbar-link">
+                                <i class="hd__navbar-icon fa-regular fa-bell"></i>
+                                Thông báo
+                            </a>
+                            <!-- tạo phần thông báo ẩn đi -->
+                            <div class="hd__notify">
+                                <header class="hd__notify-title">
+                                    <h3>Thông báo mới nhận</h3>
+                                </header>
+                                <ul class="hd__notify-list">
+                                    <li class="hd__notify-item">
+                                        <a href="#" class="hd__notify-link viewed">
+                                            <img src="/Asset/Home/Index/img/mô hình/luffy.png" alt="" class="hd__notify-img">
+                                            <div class="hd__notify-info">
+                                                <span class="hd__notify-name">Mô hình Lufffy chính hãng</span>
+                                                <span class="hd__notify-descriotion">Mô hình Luffy cao 40cm của hãng Konami</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="hd__notify-item">
+                                        <a href="#" class="hd__notify-link">
+                                            <img src="/Asset/Home/Index/img/mô hình/batman.png" alt="" class="hd__notify-img">
+                                            <div class="hd__notify-info">
+                                                <span class="hd__notify-name">Mô hình Batman chính hãng</span>
+                                                <span class="hd__notify-descriotion">Mô hình Batman cao 180cm của nhà DC</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="hd__notify-item">
+                                        <a href="#" class="hd__notify-link viewed">
+                                            <img src="/Asset/Home/Index/img/mô hình/naruto.png" alt="" class="hd__notify-img">
+                                            <div class="hd__notify-info">
+                                                <span class="hd__notify-name">Mô hình Naruto</span>
+                                                <span class="hd__notify-descriotion">Mô hình Naruto cao 120cm của hãng Konami</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <footer class=" hd__notify-footer">
+                                    <a href="" class="hd__notify-footer-btn">Xem tất cả</a>
+                                </footer>
+                            </div>
+                        </li>
+                        <li class="hd__navbar-item">
+                            <a href="" class="hd__navbar-link help">
+                                <i class="hd__navbar-icon fa-regular fa-circle-question"></i>
+                                Trợ giúp
+                            </a>
+                        </li>
+                        @if (Session["IdUser"] != null)
+                        {
+                            <li class="hd__navbar-item hd__navbar-user">
+                                <img src="/Asset/Home/Index/img/mô hình/luffy.png" alt="" class="hd__navbar-user-img">
+                                <span class="hd__navbar-user-name">@Session["FullName"]</span>
+                                <ul class="hd__navbar-user-menu">
+                                    <li class="hd__navbar-user-item">
+                                        <a href="/Area/ProductCategories">Tài khoản của tôi</a>
+                                    </li>
+                                    <li class="hd__navbar-user-item">
+                                        <a href="/cart/Succes">Đơn mua</a>
+                                    </li>
+                                    <li class="hd__navbar-user-item hd__navbar-user-item-separate">
+                                        <a href="/Home/Logout">Đăng xuất</a>
+                                    </li>
+                                </ul>
+                            </li>
+                       
+                        }
+                        else
+                        {
+                            <li class="hd__navbar-item  bold separate opacity">
+                                <a href="/Home/Login" class="hd__navbar-link login">Đăng nhập</a>
+                            </li>
+                            <li class="hd__navbar-item  bold opacity">
+                                <a href="/Home/Register" class="hd__navbar-link register">Đăng ký</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+                <!-- searrch -->
+                <div class="hd-with-search">
+                    <input type="checkbox" hidden id="mobile-menu-checkbox" class="nav__input">
+                    <label for="mobile-menu-checkbox" class="hd__mobile-menu show-on-mobile">
+                        <i class="hd__menu fa-solid fa-list-ul"></i>
+                    </label>
+                    <label for="mobile-menu-checkbox" class="nav--overplay"></label>
+                    <nav class="nav__mobile">
+                        <label for="mobile-menu-checkbox" class="nav__mobile-btn-close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </label>
+                        <ul class="nav__mobile-list">
+                            <li><a href="" class="nav__mobile-link">Trang chủ</a></li>
+                            <li><a href="" class="nav__mobile-link login">Đăng nhập</a></li>
+                            <li><a href="" class="nav__mobile-link register">Đăng ký</a></li>
+                            <li><a href="" class="nav__mobile-link help">Trợ giúp</a></li>
+                            <li><a href="product.html" class="nav__mobile-link">Sản phẩm</a></li>
+                            <li><a href="blog.html" class="nav__mobile-link">Blog</a></li>
+                            <li><a href="" class="nav__mobile-link help">Chính sách</a></li>
+                        </ul>
+                    </nav>
+                    <div class="hd__logo hide-on-mobile">
+                        <a href="/Home/Index" class="hd__logo-link">
+                            <img src="~/Asset/Home/Index/img/app/logo-DShop.png" alt="" class="logo">
+                        </a>
+                    </div>
+                    <input type="checkbox" hidden id="mobile-search-checkbox" class="hd__search-checkbox">
+
+
+                    <!-- search history -->
+                    
+                    @using (Html.BeginForm("searchkey", "Home", FormMethod.Post , new { @class = "flex" }))
+                    {
+                <div class="hd__search">
+                    <div class="hd__seach-input-warp">
+                        <input type="text" name="key" class="hd__seach-input" placeholder="Nhập vào từ khóa để bắt đầu tìm kiếm sản phẩm.........">
+
+                    </div>
+                    <input type="submit" value="Tìm kiếm" class="hd__search-btn" style=" font-size: 1.1rem; color: white; font-weight: bolder;" />
+                </div>
+                            }
+                        
+
+                        <div class="hd__cart">
+                            <a href="@Url.Action("Index","cart")" class="hd__cart-wrap">
+                                <i class="hd__cart-icon fa-solid fa-cart-shopping"></i>
+                                <span class="hd__cart-notice" id="CartCount">@Session["count"]</span>
+                                <!-- class khi ko có sản phẩm: hd__cart-list-no-cart -->
+                                <!-- class khi có sản phẩm: hd__cart-list-have-cart-->
+                                <div class="hd__cart-list hd__cart-list-no-cart">
+                                    <img src="./img/app/no_cart.png" alt="" class="hd__cart-no-cart-img">
+                                    <span class="hd__cart-list-no-cart-msg">Hãy click vào giỏ hàng để xem chi tiết tất cả sản phẩm</span>
+                                    <span class="hd__cart-list-no-cart-msg">Chức năng này đang trong quá trình hoàn thiện. Xin thông cảm!!</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+            </div>
+        </header>
+        @RenderBody()
+        <footer class="footer">
+            <div class="grid wide">
+                <div class="row">
+                    <div class="col l-2-4 m-4 c-12 center">
+                        <h3 class="footer__heading">Liên hệ</h3>
+                        <ul class="footer-list">
+                            <li class="footer-list-items">Số điện thoại:0355551111</li>
+                            <li class="footer-list-items">Địa chỉ: Như Quỳnh - Văn Lâm - Hưng Yên</li>
+                            <li class="footer-list-items">Giờ làm việc: 8h - 22h</li>
+                        </ul>
+                    </div>
+                    <div class="col l-2-4 m-4 c-12 center">
+                        <h3 class="footer__heading">Giới thiệu</h3>
+                        <span class="footer-label">Đây là cửa hàng demo bán mô hình của Dshop</span>
+                    </div>
+                    <div class="col l-2-4 m-4 c-12 center">
+                        <h3 class="footer__heading">Theo dõi chúng tôi trên</h3>
+                        <ul class="footer-list">
+                            <li><a href="https://www.facebook.com/profile.php?id=100008489491989" class="footer-list-link"><i class="footer-icon fa-brands fa-facebook"></i> Facebook</a></li>
+                            <li><a href="https://www.instagram.com/datnguyen10702/" class="footer-list-link"><i class="footer-icon fa-brands fa-instagram"></i> Instagram</a></li>
+                            <li id="footer-list-item"><a href="https://discord.com/" class="footer-list-link"><i class="footer-icon fa-brands fa-discord"></i> Discord</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l-2-4 m-4 c-12 center">
+                        <h3 class="footer__heading">Chăm sóc khách hàng</h3>
+                        <ul class="footer-list">
+                            <li class="footer-list-items"><a href="ctsp2.html">Trung tâm trợ giúp khách hàng</a> </li>
+                            <li class="footer-list-items"><a href="#">Hướng dẫn mua hàng</a> </li>
+                            <li class="footer-list-items"><a href="#">Hỏi & Trả lời</a> </li>
+                        </ul>
+                    </div>
+                    <div class="col l-2-4 m-8 c-12 center">
+                        <h3 class="footer__heading">Giao hàng qua các đơn vị vận chuyển sau</h3>
+                        <div class="footer__transport">
+                            <a href="" class="footer__transport-link"><img src="/Asset/Home/Index/img/app/giaohangnhanh.png" alt="Logo Giao Hàng Nhanh" class="footer__transport-img"></a>
+                            <a href="" class="footer__transport-link"><img src="/Asset/Home/Index/img/app/vietnam-post.png" alt="Logo Vietnam Post" class="footer__transport-img"></a>
+                            <a href="" class="footer__transport-link"><img src="/Asset/Home/Index/img/app/giao-hang-tiet-kiem.png" alt="Logo Giao Hàng Tiết Kiệm" class="footer__transport-img"></a>
+                            <a href="" class="footer__transport-link"><img src="/Asset/Home/Index/img/app/viettel-post.png" alt="Logo Viettel Post" class="footer__transport-img"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="footer__bottom">
+            <div class="grid wide">
+                <p class="footer__text">© - 2022 Bản quyển thuộc về Nguyễn Tiến Đạt</p>
+            </div>
+        </div>
+        <div class="backtop">
+            <i class="backtop-icon fa-solid fa-angle-up"></i>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="/Asset/Home/Index/my_jq.js"></script>
+<script src="~/Asset/Home/Admin/vendor/ckeditor/ckeditor.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+@RenderSection("scripts", false)
+</html>

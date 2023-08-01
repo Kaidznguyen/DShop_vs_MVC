@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="155f82429a414cebaa35cce3e5538c3e" Name="Diagram1">
+        <EntityTypeShape EntityType="DshopModel.ApplicationRole" Width="1.5" PointX="7.875" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.ApplicationUserClaim" Width="1.5" PointX="0.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.ApplicationUserLogin" Width="1.5" PointX="5.375" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.ApplicationUserRole" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.ApplicationUser" Width="1.5" PointX="3.125" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.Error" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.Feedback" Width="1.5" PointX="9.875" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.Footer" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.MenuGroup" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.Menu" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.OrderDetail" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.Order" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.PostCategory" Width="1.5" PointX="0.75" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.Post" Width="1.5" PointX="3" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.ProductCategory" Width="1.5" PointX="0.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.Product" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.Slide" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.SupportOnline" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DshopModel.Tag" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
+        <AssociationConnector Association="DshopModel.FK_dbo_ApplicationUserRoles_dbo_ApplicationRoles_IdentityRole_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.FK_dbo_ApplicationUserClaims_dbo_ApplicationUsers_ApplicationUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.FK_dbo_ApplicationUserLogins_dbo_ApplicationUsers_ApplicationUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.FK_dbo_ApplicationUserRoles_dbo_ApplicationUsers_ApplicationUser_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.FK_dbo_Orders_dbo_ApplicationUsers_CustomerId" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.FK_dbo_Menus_dbo_MenuGroups_GroupID" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.FK_dbo_OrderDetails_dbo_Orders_OrderID" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.FK_dbo_OrderDetails_dbo_Products_ProductID" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.FK_dbo_Posts_dbo_PostCategories_CategoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.FK_dbo_Products_dbo_ProductCategories_CategoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.PostTags" ManuallyRouted="false" />
+        <AssociationConnector Association="DshopModel.ProductTags" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
